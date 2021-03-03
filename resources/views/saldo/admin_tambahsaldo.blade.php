@@ -12,7 +12,7 @@
 				<div class="x_content">
 					<br />
 					<form role="form" action="/tambah_saldostore" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-					{{csrf_field() }}
+						{{csrf_field() }}
 						<div class="item form-group">
 							<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">ID Akun <span class="required">*</span>
 							</label>
@@ -20,7 +20,7 @@
 								<input type="text" id="first-name" name="user_id" value="{{$users->id}}" class="form-control " readonly="">
 							</div>
 						</div>
-						
+
 						<div class="item form-group">
 							<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Tambah Saldo<span class="required">*</span>
 							</label>
@@ -45,4 +45,4 @@
 
 
 
-@endsection
+	@endsection

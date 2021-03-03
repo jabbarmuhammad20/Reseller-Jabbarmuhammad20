@@ -234,17 +234,25 @@
 
           <div id="step-3">
             <h2 class="StepTitle">Step 3 Content</h2>
+				<div class="item form-group">
+					<label class="col-form-label col-md-3 col-sm-3 label-align" for="kategori">Status</label>
+					<div class="col-md-6 col-sm-6">
+						<select class="form-control" id="stts" name="stts">
+							<option value="publish">Publish</option>
+							<option value="diarsipkan">Arsipkan</option>
+						</select>
+					</div>
+				</div>
+				<div class="item form-group">
+					<label class="col-form-label col-md-3 col-sm-3 label-align" for="upload_produk">Gambar Produk</label>
+					<div class="col-md-6 col-sm-6">
+						<div class="product-image">
+			              <img src="{{ asset ('storage/'. $produk_tabel->upload_produk ) }}" width="500" height="600" />
+			            </div>
+					</div>
+				</div>
 				<div class="ln_solid"></div>
 					<div class="item form-group">
-						<div class="item form-group row">
-							<label class="col-form-label col-md-3 col-sm-3 label-align" for="kategori">Status</label>
-								<div class="col-md-6 col-sm-6">
-									<select class="form-control" id="stts" name="stts">
-										<option value="publish">Publish</option>
-										<option value="diarsipkan">Arsipkan</option>
-									</select>
-								</div>
-						</div>
 						<div class="col-md-6 col-sm-6 offset-md-3">
 							<a href="/daftar_produk" type="button" class="btn btn-secondary">Cancel</a>
 							<button class="btn btn-danger" type="reset">Reset</button>

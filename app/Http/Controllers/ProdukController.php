@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Produk;
 use DB;
 use File;
+use Excel;
+use App\Imports\ProdukImport;
 
 class ProdukController extends Controller
 {
@@ -14,47 +16,47 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index()
     {
         //untuk admin
-    
-   
+
+
     }
 
-    public function k_jaket_bomber() 
+    public function k_jaket_bomber()
     {
         $produk_tabel = Produk::all();
-        return view('produk.kategori.k_jaket_bomber')->with('produk_tabel', $produk_tabel);  
+        return view('produk.kategori.k_jaket_bomber')->with('produk_tabel', $produk_tabel);
     }
 
-        public function k_jaket_zipper() 
+    public function k_jaket_zipper()
     {
         $produk_tabel = Produk::all();
-        return view('produk.kategori.k_jaket_zipper')->with('produk_tabel', $produk_tabel);  
+        return view('produk.kategori.k_jaket_zipper')->with('produk_tabel', $produk_tabel);
     }
 
-        public function k_jaket_hoodie() 
+    public function k_jaket_hoodie()
     {
         $produk_tabel = Produk::all();
-        return view('produk.kategori.k_jaket_hoodie')->with('produk_tabel', $produk_tabel);  
+        return view('produk.kategori.k_jaket_hoodie')->with('produk_tabel', $produk_tabel);
     }
 
-        public function k_kaos_polos_pendek() 
+    public function k_kaos_polos_pendek()
     {
         $produk_tabel = Produk::all();
-        return view('produk.kategori.k_kaos_polos_pendek')->with('produk_tabel', $produk_tabel);  
+        return view('produk.kategori.k_kaos_polos_pendek')->with('produk_tabel', $produk_tabel);
     }
 
-        public function k_kaos_polos_panjang() 
+    public function k_kaos_polos_panjang()
     {
         $produk_tabel = Produk::all();
-        return view('produk.kategori.k_kaos_polos_panjang')->with('produk_tabel', $produk_tabel);  
+        return view('produk.kategori.k_kaos_polos_panjang')->with('produk_tabel', $produk_tabel);
     }
 
-        public function admin_diarsipkan() 
+    public function admin_diarsipkan()
     {
         $produk_tabel = Produk::all();
-        return view('produk.kategori.admin_diarsipkan')->with('produk_tabel', $produk_tabel);  
+        return view('produk.kategori.admin_diarsipkan')->with('produk_tabel', $produk_tabel);
     }
 
 
@@ -76,27 +78,27 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'k_produk'=>'unique:produk_tabel'
-            ]);
+        $this->validate($request, [
+            'k_produk' => 'unique:produk_tabel'
+        ]);
 
-        $produk_tabel= new Produk;
-        $produk_tabel->kategori=$request->kategori;
-        $produk_tabel->user_id=$request->user_id;
-        $produk_tabel->k_produk=$request->k_produk;
-        $produk_tabel->n_produk=$request->n_produk;
-        $produk_tabel->deskripsi=$request->deskripsi;
-        $produk_tabel->warna=$request->warna;
-        $produk_tabel->stok_m=$request->stok_m;
-        $produk_tabel->hrg_m=$request->hrg_m;
-        $produk_tabel->stok_l=$request->stok_l;
-        $produk_tabel->hrg_l=$request->hrg_l;
-        $produk_tabel->stok_xl=$request->stok_xl;
-        $produk_tabel->hrg_xl=$request->hrg_xl;
-        $produk_tabel->stok_xxl=$request->stok_xxl;
-        $produk_tabel->hrg_xxl=$request->hrg_xxl;
-        $produk_tabel->stts=$request->stts;
-        $produk_tabel->upload_produk=$request->file('upload_produk')->store('File_Produk');
+        $produk_tabel = new Produk;
+        $produk_tabel->kategori = $request->kategori;
+        $produk_tabel->user_id = $request->user_id;
+        $produk_tabel->k_produk = $request->k_produk;
+        $produk_tabel->n_produk = $request->n_produk;
+        $produk_tabel->deskripsi = $request->deskripsi;
+        $produk_tabel->warna = $request->warna;
+        $produk_tabel->stok_m = $request->stok_m;
+        $produk_tabel->hrg_m = $request->hrg_m;
+        $produk_tabel->stok_l = $request->stok_l;
+        $produk_tabel->hrg_l = $request->hrg_l;
+        $produk_tabel->stok_xl = $request->stok_xl;
+        $produk_tabel->hrg_xl = $request->hrg_xl;
+        $produk_tabel->stok_xxl = $request->stok_xxl;
+        $produk_tabel->hrg_xxl = $request->hrg_xxl;
+        $produk_tabel->stts = $request->stts;
+        $produk_tabel->upload_produk = $request->file('upload_produk')->store('File_Produk');
         $produk_tabel->save();
         return redirect('/create/produk')->with('toast_success', 'Data Berhasil Ditambahkan !');
     }
@@ -113,10 +115,10 @@ class ProdukController extends Controller
         return view('produk.daftar_produk')->with('produk_tabel', $produk_tabel);
     }
 
-    public function show ($id)
+    public function show($id)
     {
-        $produk_tabel = Produk::findOrFail ($id);
-        return view ('produk.lihatproduk')->with('produk_tabel',$produk_tabel);
+        $produk_tabel = Produk::findOrFail($id);
+        return view('produk.lihatproduk')->with('produk_tabel', $produk_tabel);
     }
 
     /**
@@ -127,8 +129,8 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        $produk_tabel = Produk::findOrFail ($id);
-        return view ('produk.admin_editproduk')->with('produk_tabel',$produk_tabel);
+        $produk_tabel = Produk::findOrFail($id);
+        return view('produk.admin_editproduk')->with('produk_tabel', $produk_tabel);
     }
 
     /**
@@ -140,7 +142,7 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $produk_tabel= Produk::where('id', $id)->first();
+        $produk_tabel = Produk::where('id', $id)->first();
         $produk_tabel->fill($request->all());
         $produk_tabel->update();
         return redirect()->to('daftar_produk')->with(['success' => 'Produk Berhasil Disimpan']);;
@@ -155,12 +157,30 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         // hapus file
-        $produk_tabel = Produk::where('id',$id)->first();
-        File::delete('storage/'.$produk_tabel->upload_produk);
- 
+        $produk_tabel = Produk::where('id', $id)->first();
+        File::delete('storage/' . $produk_tabel->upload_produk);
+
         // hapus data
-        Produk::where('id',$id)->delete();
- 
+        Produk::where('id', $id)->delete();
+
         return redirect()->back();
+    }
+
+    public function importExcelProduk(Request $request)
+    {
+        // menangkap file excel
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = rand() . $file->getClientOriginalName();
+
+        // upload ke folder file_siswa di dalam folder public
+        $file->move('ImportProduk', $nama_file);
+
+        // import data
+        Excel::import(new ProdukImport, public_path('/ImportProduk/' . $nama_file));
+
+        // alihkan halaman kembali
+        return redirect('/');
     }
 }
