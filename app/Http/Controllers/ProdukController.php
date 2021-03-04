@@ -145,7 +145,7 @@ class ProdukController extends Controller
         $produk_tabel = Produk::where('id', $id)->first();
         $produk_tabel->fill($request->all());
         $produk_tabel->update();
-        return redirect()->to('daftar_produk')->with(['success' => 'Produk Berhasil Disimpan']);;
+        return redirect()->to('daftar_produk')->with(['success' => 'Produk Berhasil Disimpan']);
     }
 
     /**
@@ -168,19 +168,8 @@ class ProdukController extends Controller
 
     public function importExcelProduk(Request $request)
     {
-        // menangkap file excel
-        $file = $request->file('file');
-
-        // membuat nama file unik
-        $nama_file = rand() . $file->getClientOriginalName();
-
-        // upload ke folder file_siswa di dalam folder public
-        $file->move('ImportProduk', $nama_file);
-
-        // import data
-        Excel::import(new ProdukImport, public_path('/ImportProduk/' . $nama_file));
-
+        Excel::import(new ProdukImport, request()->file('file'));
         // alihkan halaman kembali
-        return redirect('/');
+        return redirect()->back()->with('success', 'Data Berhasil Ditambahkan !');
     }
 }

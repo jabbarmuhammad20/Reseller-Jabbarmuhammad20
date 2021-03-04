@@ -244,31 +244,25 @@
 		<div class="modal-content">
 
 			<div class="modal-header">
-				<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				<h4 class="modal-title" id="myModalLabel">Import File Excel</h4>
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
 				</button>
 			</div>
 			<form action="{{url('/importExcelProduk')}}" role="form" enctype="multipart/form-data" method="post">
 				{{csrf_field()}}
 				<div class="item form-group">
-					<label class="col-form-label col-md-3 col-sm-3 label-align" for="file">Gambar<span class="required">*</span>
+					<label class="col-form-label col-md-3 col-sm-3 label-align" for="file">Import File Excel<span class="required text-danger">*</span>
 					</label>
-
 					<div class="col-md-6 col-sm-6">
 						<input type="file" id="file" name="file" required="required" class="form-control">
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Save changes</button>
+					<button type="submit" class="btn btn-primary">Import</button>
 				</div>
 			</form>
 		</div>
-
 		<!-- /page content -->
 	</div>
-
-
-</div>
-</div>
 </div>

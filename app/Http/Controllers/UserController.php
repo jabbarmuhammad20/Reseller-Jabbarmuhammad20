@@ -104,7 +104,7 @@ class UserController extends Controller
 
     public function pelanggan_sandi()
     {
-        return view('pelanggan.pelanggan_sandi');
+        return view('/pelanggan.pelanggan_sandi');
     }
 
     /**

@@ -147,6 +147,7 @@ INSERT INTO `riwayat_tranksaksi_tabel` (`id`, `produk_id`, `user_id`, `invoice`,
 -- Triggers `riwayat_tranksaksi_tabel`
 --
 DELIMITER $$
+<<<<<<< HEAD
 CREATE TRIGGER `Stok` AFTER INSERT ON `riwayat_tranksaksi_tabel` FOR EACH ROW BEGIN 
 UPDATE produk_tabel SET stok_m=stok_m-NEW.stok_m
 WHERE id=NEW.produk_id;
@@ -160,6 +161,21 @@ WHERE id=NEW.produk_id;
 UPDATE produk_tabel SET stok_xxl=stok_xxl-NEW.stok_xxl
 WHERE id=NEW.produk_id;
 
+=======
+CREATE TRIGGER `Stok` AFTER INSERT ON `riwayat_tranksaksi_tabel` FOR EACH ROW BEGIN 
+UPDATE produk_tabel SET stok_m=stok_m-NEW.stok_m
+WHERE id=NEW.produk_id;
+
+UPDATE produk_tabel SET stok_l=stok_l-NEW.stok_l
+WHERE id=NEW.produk_id;
+
+UPDATE produk_tabel SET stok_xl=stok_xl-NEW.stok_xl
+WHERE id=NEW.produk_id;
+
+UPDATE produk_tabel SET stok_xxl=stok_xxl-NEW.stok_xxl
+WHERE id=NEW.produk_id;
+
+>>>>>>> d749dd02767205ebe8dbe5952360e06dd154acd2
 END
 $$
 DELIMITER ;
@@ -198,6 +214,7 @@ INSERT INTO `saldo_tabel` (`id`, `user_id`, `pesanan_id`, `produk`, `harga`, `qt
 -- Triggers `saldo_tabel`
 --
 DELIMITER $$
+<<<<<<< HEAD
 CREATE TRIGGER `Tranksaksi` AFTER INSERT ON `saldo_tabel` FOR EACH ROW BEGIN 
 UPDATE users SET saldo=saldo-NEW.saldo_keluar
 WHERE id=NEW.user_id;
@@ -205,6 +222,15 @@ WHERE id=NEW.user_id;
 UPDATE users SET saldo=saldo+NEW.saldo_masuk
 WHERE id=NEW.user_id;
 
+=======
+CREATE TRIGGER `Tranksaksi` AFTER INSERT ON `saldo_tabel` FOR EACH ROW BEGIN 
+UPDATE users SET saldo=saldo-NEW.saldo_keluar
+WHERE id=NEW.user_id;
+
+UPDATE users SET saldo=saldo+NEW.saldo_masuk
+WHERE id=NEW.user_id;
+
+>>>>>>> d749dd02767205ebe8dbe5952360e06dd154acd2
 END
 $$
 DELIMITER ;

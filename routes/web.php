@@ -25,16 +25,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('qrcode', function () {
-
-	return QrCode::size(300)->generate('https://wa.me/6285321862797');
-});
-
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 	// ProdukController
 	Route::post('/importExcelProduk', 'ProdukController@importExcelProduk');
 	Route::get('/admin_diarsipkan', 'ProdukController@admin_diarsipkan');
-	Route::get('/create/produk', 'ProdukController@create')->name('tambahproduk');
+	Route::get('/create_produk', 'ProdukController@create')->name('tambahproduk');
 	Route::post('/tambahproduk', 'ProdukController@store');
 	Route::get('/admin_editproduk/{id}', 'ProdukController@edit')->name('admin_editproduk');
 	Route::delete('produk/delete{id}', 'ProdukController@destroy')->name('delete_produk');
@@ -75,7 +70,10 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,pelanggan']], function (
 	Route::resource('pelanggan', 'UserController');
 	Route::get('pelanggan_ceksaldo/{id}', 'UserController@pelanggan_saldo');
 	Route::get('pelanggan_profile', 'UserController@pelanggan_profile');
-	Route::get('pelanggan_sandi', 'UserController@pelanggan_sandi');
+
+	// Ganti Kata Sandi
+	Route::get('/pelanggan_sandi', 'UserController@pelanggan_sandi');
+	Route::put('/password', 'PasswordController@update')->name('password.update');
 
 	// Saldo Keluar Masuk
 	Route::resource('/saldokeluarmasuk', 'SaldokeluarmasukController');
