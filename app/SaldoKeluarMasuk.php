@@ -10,6 +10,7 @@ class SaldoKeluarMasuk extends Model
   protected $fillable = [
     'user_id',
     'pesanan_id',
+    'nm_penerima',
     'produk',
     'harga',
     'qty',
@@ -17,10 +18,10 @@ class SaldoKeluarMasuk extends Model
     'saldo_masuk',
     'konfirmasi',
     'ket'
-    ];
+  ];
 
-public function User()
-       {
-        return $this->belongsTo('App\User');
-       }
+  public function User()
+  {
+    return $this->belongsTo('App\User');
+  }
 }

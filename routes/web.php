@@ -33,11 +33,15 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 	Route::post('/tambahproduk', 'ProdukController@store');
 	Route::get('/admin_editproduk/{id}', 'ProdukController@edit')->name('admin_editproduk');
 	Route::delete('produk/delete{id}', 'ProdukController@destroy')->name('delete_produk');
+	Route::get('produk/export', 'ProdukController@exportproduk');
+
 	// Pelanggan
 	Route::get('/admin_daftarpelanggan', 'UserController@index')->name('daftarpelanggan');
 	Route::get('/tambahpelanggan', 'UserController@create')->name('tambahpelanggan');
 	Route::post('/tambahpelanggan/tambah', 'UserController@store');
 	Route::get('/user/hapus/{id}', 'UserController@destroy');
+	Route::get('/export/user', 'UserController@exportuser');
+
 	// Pesanan
 	Route::get('/user/destroy/{id}', 'UserController@destroy');
 	Route::get('/pesanan_dikemas{id}', [RiwayatTranksaksiController::class, 'pesanan_dikemas'])->name('pesanan_dikemas');
@@ -45,6 +49,12 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 	Route::get('/admin_pesanansegeradikirim', 'RiwayatTranksaksiController@pesanan_segeradikirim');
 	Route::get('/admin_terkonfirmasi', 'RiwayatTranksaksiController@pesanan_terkonfirmasi');
 	Route::get('/admin_historipesanan', 'RiwayatTranksaksiController@admin_historipesanan');
+
+	// Kategori
+	Route::get('/admin_createKategori', 'KategoriController@create');
+	Route::post('/admin_storeKategori', 'KategoriController@store')->name('tambah.kategori');
+	Route::get('/kategori-{id}', 'KategoriController@show')->name('kategori.show');
+	Route::delete('kategori/delete{id}', 'KategoriController@destroy')->name('kategori.delete');
 
 	// saldokeluarmasuk
 	Route::get('/pesanan_terkonfirmasi_show/{id}', 'SaldokeluarmasukController@create');
@@ -56,15 +66,12 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 Route::group(['middleware' => ['auth', 'checkRole:admin,pelanggan']], function () {
 	// Produk
 	Route::resource('produk', 'ProdukController');
-	Route::get('/daftar_produk', 'ProdukController@daftar_produk')->name('daftar_produk');
-	Route::get('/lihatproduk/{id}', 'ProdukController@show');
+	Route::get('/lihatproduk/{id}', 'ProdukController@show')->name('lihat.produk');
 
 	// Kategori
-	Route::get('/k_jaket_bomber', 'ProdukController@k_jaket_bomber');
-	Route::get('/k_jaket_zipper', 'ProdukController@k_jaket_zipper');
-	Route::get('/k_jaket_hoodie', 'ProdukController@k_jaket_hoodie');
-	Route::get('/k_kaos_polos_pendek', 'ProdukController@k_kaos_polos_pendek');
-	Route::get('/k_kaos_polos_panjang', 'ProdukController@k_kaos_polos_panjang');
+	Route::resource('/kategori', 'KategoriController');
+	Route::get('/daftar_produk', 'KategoriController@index')->name('kategori');
+	Route::get('/kategori/{kategori}', 'KategoriController@kategori_show')->name('produkkategori.show');
 
 	/*Pelanggan*/
 	Route::resource('pelanggan', 'UserController');
@@ -84,15 +91,11 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,pelanggan']], function (
 	// Tranksaksi
 	Route::resource('/riwayattranksaksi', 'RiwayatTranksaksiController');
 	Route::get('/pesanan', 'RiwayatTranksaksiController@index');
-	Route::get('/pesanancreate/{id}', 'RiwayatTranksaksiController@create');
-
+	Route::get('/pesanancreate/{id}', 'RiwayatTranksaksiController@create')->name('create.tranksaksi');
 	Route::get('/pelanggan_pesanandiproses/{id}', 'RiwayatTranksaksiController@pelanggan_pesanandiproses')->name('pesananproses');
-
 	Route::get('/pelanggan_pesananhistori/{id}', 'RiwayatTranksaksiController@pelanggan_pesananhistori');
 	Route::get('/pelanggan_pesanandikirim/{id}', 'RiwayatTranksaksiController@pelanggan_pesanandikirim');
 	Route::get('/pelanggan_pesanandikonfirmasi/{id}', 'RiwayatTranksaksiController@pelanggan_pesanandikonfirmasi');
-
 	Route::get('/pelanggan_histori/{id}', 'RiwayatTranksaksiController@pelanggan_pesananhistori');
-
-	Route::get('/hapuspesanan/{id}', 'RiwayatTranksaksiController@destroy');
+	Route::delete('/hapuspesanan/{id}', 'RiwayatTranksaksiController@destroy')->name('tranksaksi.destroy');
 });

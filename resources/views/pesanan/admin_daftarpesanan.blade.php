@@ -23,11 +23,11 @@
             </div>
             <div class="x_content">
                 <form class="" action="/riwayattranksaksi" method="post" enctype="multipart/form-data" novalidate>
-                   {{csrf_field() }} 
+                    {{csrf_field() }}
                     <p>Mohon cek terlebih dahulu sebelum memesan
                     </p>
                     <span class="section">Info Produk Yang Dipesan</span>
-                    
+
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Akun ID<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
@@ -45,106 +45,120 @@
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Penerima<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="nm_pengirim" type="text" required=""/></div>
+                            <input class="form-control" class='optional' name="nm_pengirim" type="text" required="" />
+                        </div>
                     </div>
 
-                   <div class="field item form-group">
+                    <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Alamat Penerima<span class="required">**</span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="almt_pengirim" type="text" placeholder="Jika Menggunakan Metode B" /></div>
+                            <input class="form-control" class='optional' name="almt_pengirim" type="text" placeholder="Jika Menggunakan Metode B" />
+                        </div>
                     </div>
 
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Kode Produk<span class="required"></span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="k_produk" value="{{$produk_tabel->k_produk}}" type="text" readonly="" /></div>
+                            <input class="form-control" class='optional' name="k_produk" value="{{$produk_tabel->k_produk}}" type="text" readonly="" />
+                        </div>
                     </div>
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Produk<span class="required"></span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="n_produk" value="{{$produk_tabel->n_produk}}" type="text" readonly="" /></div>
+                            <input class="form-control" class='optional' name="n_produk" value="{{$produk_tabel->n_produk}}" type="text" readonly="" />
+                        </div>
                     </div>
 
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Warna<span class="required"></span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="warna" value="{{$produk_tabel->warna}}" type="text" readonly="" /></div>
+                            <input class="form-control" class='optional' name="warna" value="{{$produk_tabel->warna}}" type="text" readonly="" />
+                        </div>
                     </div>
 
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Stok Produk Uk. M<span class="required"></span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="stok_m" type="number"  value="0" @if($produk_tabel->stok_m=='0') readonly="" @endif  /></div>
+                            <input class="form-control" class='optional' name="stok_m" type="number" value="0" @if($produk_tabel->stok_m=='0') readonly="" @endif />
+                        </div>
                     </div>
-                    
+
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Stok Produk Uk. L<span class="required"></span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="stok_l" type="number"  value="0" @if($produk_tabel->stok_l=='0') readonly="" @endif  /></div>
+                            <input class="form-control" class='optional' name="stok_l" type="number" value="0" @if($produk_tabel->stok_l=='0') readonly="" @endif />
+                        </div>
                     </div>
-                    
+
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Stok Produk Uk. XL<span class="required"> </span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="stok_xl" type="number"  value="0" @if($produk_tabel->stok_xl=='0') readonly="" @endif  /></div>
+                            <input class="form-control" class='optional' name="stok_xl" type="number" value="0" @if($produk_tabel->stok_xl=='0') readonly="" @endif />
+                        </div>
                     </div>
 
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Stok Produk Uk. XXL<span class="required"></span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="stok_xxl" type="number" value="0" @if($produk_tabel->stok_xxl=='0') readonly="" @endif /></div>
+                            <input class="form-control" class='optional' name="stok_xxl" type="number" value="0" @if($produk_tabel->stok_xxl=='0') readonly="" @endif />
+                        </div>
                     </div>
 
                     <!-- Harga Produk -->
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Harga Produk Uk. M<span class="required"> </span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="hrg_m" type="number"  value="{{$produk_tabel->hrg_m}}" readonly="" /></div>
+                            <input class="form-control" class='optional' name="hrg_m" type="number" value="{{$produk_tabel->hrg_m}}" readonly="" />
+                        </div>
                     </div>
-                    
+
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Harga Produk Uk. L<span class="required"> </span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="hrg_l" type="number"  value="{{$produk_tabel->hrg_l}}" readonly="" /></div>
+                            <input class="form-control" class='optional' name="hrg_l" type="number" value="{{$produk_tabel->hrg_l}}" readonly="" />
+                        </div>
                     </div>
-                    
+
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Harga Produk Uk. XL<span class="required"> </span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="hrg_xl" type="number"  value="{{$produk_tabel->hrg_xl}}" readonly="" /></div>
+                            <input class="form-control" class='optional' name="hrg_xl" type="number" value="{{$produk_tabel->hrg_xl}}" readonly="" />
+                        </div>
                     </div>
 
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Harga Produk Uk. XXL<span class="required"> </span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="hrg_xxl" type="number" value="{{$produk_tabel->hrg_xxl}}" readonly="" /></div>
+                            <input class="form-control" class='optional' name="hrg_xxl" type="number" value="{{$produk_tabel->hrg_xxl}}" readonly="" />
+                        </div>
                     </div>
-                    
+
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Ket. <span class="required"></span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="ket"  type="text" />
+                            <input class="form-control" class='optional' name="ket" type="text" />
                         </div>
                     </div>
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Upload Resi <span class="required"></span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='optional' name="upld_resi" type="file" /></div>
+                            <input class="form-control" class='optional' name="upld_resi" type="file" />
+                        </div>
                     </div>
-                    
+
                     <div class="ln_solid">
                         <div class="form-group">
                             <div class="col-md-6 offset-md-3">
-                            @if(auth()->user()->saldo <= $produk_tabel->hrg_m)
-                            <a href="" type="button" class="btn btn-danger btn-block">Saldo anda : {{auth()->user()->saldo}} Tidak Mencukupi</a>
-                            <a href="" class="" data-toggle="modal" data-target="#exampleModalCenter">Bantuan</a>
-                            @endif
+                                @if(auth()->user()->saldo <= $produk_tabel->hrg_m)
+                                    <a href="" type="button" class="btn btn-danger btn-block">Saldo anda : {{auth()->user()->saldo}} Tidak Mencukupi</a>
+                                    <a href="" class="" data-toggle="modal" data-target="#exampleModalCenter">Bantuan</a>
+                                    @endif
 
-                            @if(auth()->user()->saldo > $produk_tabel->hrg_xxl)
+                                    @if(auth()->user()->saldo > $produk_tabel->hrg_xxl)
 
-                            <button type='submit' class="btn btn-primary">Pesan</button>
-                            <button type='reset' class="btn btn-danger">Reset</button>
-                                <a href="{{action('ProdukController@daftar_produk')}}"type="cancel" class="btn btn-secondary">Kembali</a>
+                                    <button type='submit' class="btn btn-primary">Pesan</button>
+                                    <button type='reset' class="btn btn-danger">Reset</button>
+                                    <a href="{{route('kategori')}}" type="cancel" class="btn btn-secondary">Kembali</a>
                             </div>
                             @endif
                         </div>
@@ -163,26 +177,26 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Bantuan</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-    Mohon maaf saldo anda harus lebih besar dari produk ukuran XXL<br>
-    Silahkan mengisi saldo terlebih dahulu
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Bantuan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Mohon maaf saldo anda harus lebih besar dari produk ukuran XXL<br>
+                Silahkan mengisi saldo terlebih dahulu
 
-    <br>
-    <br>Ttd : Admin<br>
-    
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+                <br>
+                <br>Ttd : Admin<br>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

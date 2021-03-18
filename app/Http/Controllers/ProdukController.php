@@ -8,6 +8,9 @@ use DB;
 use File;
 use Excel;
 use App\Imports\ProdukImport;
+use App\Exports\ProdukExport;
+use App\Kategori;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class ProdukController extends Controller
 {
@@ -18,48 +21,13 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        //untuk admin
-
-
-    }
-
-    public function k_jaket_bomber()
-    {
-        $produk_tabel = Produk::all();
-        return view('produk.kategori.k_jaket_bomber')->with('produk_tabel', $produk_tabel);
-    }
-
-    public function k_jaket_zipper()
-    {
-        $produk_tabel = Produk::all();
-        return view('produk.kategori.k_jaket_zipper')->with('produk_tabel', $produk_tabel);
-    }
-
-    public function k_jaket_hoodie()
-    {
-        $produk_tabel = Produk::all();
-        return view('produk.kategori.k_jaket_hoodie')->with('produk_tabel', $produk_tabel);
-    }
-
-    public function k_kaos_polos_pendek()
-    {
-        $produk_tabel = Produk::all();
-        return view('produk.kategori.k_kaos_polos_pendek')->with('produk_tabel', $produk_tabel);
-    }
-
-    public function k_kaos_polos_panjang()
-    {
-        $produk_tabel = Produk::all();
-        return view('produk.kategori.k_kaos_polos_panjang')->with('produk_tabel', $produk_tabel);
     }
 
     public function admin_diarsipkan()
     {
         $produk_tabel = Produk::all();
-        return view('produk.kategori.admin_diarsipkan')->with('produk_tabel', $produk_tabel);
+        return view('produk.kategori.admin_diarsipkan', compact('produk_tabel'));
     }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -67,7 +35,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('produk.tambah_produk');
+        $kategori = Kategori::all();
+        return view('produk.tambah_produk', compact('kategori'));
     }
 
     /**
@@ -109,11 +78,6 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function daftar_produk()
-    {
-        $produk_tabel = Produk::all();
-        return view('produk.daftar_produk')->with('produk_tabel', $produk_tabel);
-    }
 
     public function show($id)
     {
@@ -145,7 +109,7 @@ class ProdukController extends Controller
         $produk_tabel = Produk::where('id', $id)->first();
         $produk_tabel->fill($request->all());
         $produk_tabel->update();
-        return redirect()->to('daftar_produk')->with(['success' => 'Produk Berhasil Disimpan']);
+        return redirect()->to('kategori')->with(['success' => 'Produk Berhasil Disimpan']);
     }
 
     /**
@@ -164,6 +128,11 @@ class ProdukController extends Controller
         Produk::where('id', $id)->delete();
 
         return redirect()->back();
+    }
+
+    public function exportproduk()
+    {
+        return Excel::download(new ProdukExport, 'ExportProduk.xlsx');
     }
 
     public function importExcelProduk(Request $request)

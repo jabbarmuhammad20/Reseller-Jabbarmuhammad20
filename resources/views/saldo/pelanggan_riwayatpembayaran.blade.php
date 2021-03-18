@@ -104,7 +104,7 @@
               <tr>
                 <th>No</th>
                 <th>Tanggal</th>
-                <th>Akun</th>
+                <th>Akun | Nama Penerima</th>
                 <th>Saldo Keluar</th>
                 <th>Konfirmasi</th>
                 <th>Ket.</th>
@@ -117,7 +117,7 @@
               <tr>
                 <td>{{$no++}}</td>
                 <td>{{$saldo->created_at}}</td>
-                <td>{{$saldo->User->name}}</td>
+                <td>{{$saldo->User->name}} | {{$saldo->nm_penerima}}</td>
                 <td>{{ "Rp. " . number_format($saldo->saldo_keluar, 0, ",", ".") }}</td>
                 <td>{{$saldo->konfirmasi}}</td>
                 <td>{{$saldo->ket}}</td>
@@ -133,7 +133,7 @@
               <tr>
                 <th>No</th>
                 <th>Tanggal</th>
-                <th>Akun</th>
+                <th>Akun | Nama Penerima</th>
                 <th>Saldo Masuk</th>
                 <th>Saldo Keluar</th>
                 <th>Aksi</th>
@@ -145,7 +145,7 @@
               @if($saldo->saldo_keluar < 1) <tr>
                 <td>{{$no++}}</td>
                 <td>{{$saldo->created_at}}</td>
-                <td>{{$saldo->User->name}}</td>
+                <td>{{$saldo->User->name}} | {{$saldo->nm_penerima}}</td>
                 <td>{{ "Rp. " . number_format($saldo->saldo_masuk, 0, ",", ".") }}</td>
                 <td>{{ "Rp. " . number_format($saldo->saldo_keluar, 0, ",", ".") }}</td>
                 <td>

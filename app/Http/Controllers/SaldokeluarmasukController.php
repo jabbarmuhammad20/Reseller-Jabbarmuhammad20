@@ -22,14 +22,14 @@ class SaldokeluarmasukController extends Controller
 
     public function admin_historisaldo()
     {
-        $saldo_keluar_masuk_tabel= SaldoKeluarMasuk::all();
-        return view('/saldo.admin_historisaldo', ['saldo_keluar_masuk_tabel'=>$saldo_keluar_masuk_tabel]);
+        $saldo_keluar_masuk_tabel = SaldoKeluarMasuk::all();
+        return view('/saldo.admin_historisaldo', ['saldo_keluar_masuk_tabel' => $saldo_keluar_masuk_tabel]);
     }
 
     public function pelanggan_riwayatpembayaran($id)
     {
-        $saldo_keluar_masuk_tabel= SaldoKeluarMasuk::where('user_id',Auth::user()->id)->paginate(10);
-        return view('/saldo.pelanggan_riwayatpembayaran', ['saldo_keluar_masuk_tabel'=>$saldo_keluar_masuk_tabel]);
+        $saldo_keluar_masuk_tabel = SaldoKeluarMasuk::where('user_id', Auth::user()->id)->paginate(10);
+        return view('/saldo.pelanggan_riwayatpembayaran', ['saldo_keluar_masuk_tabel' => $saldo_keluar_masuk_tabel]);
     }
 
     /**
@@ -38,38 +38,39 @@ class SaldokeluarmasukController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create($id)
-    { 
+    {
         $riwayat_tranksaksi_tabel = Pesanan::findOrFail($id);
-        return view('pesanan.konfirmasi.admin_konfirmasipesanan',['riwayat_tranksaksi_tabel'=>$riwayat_tranksaksi_tabel]);
+        return view('pesanan.konfirmasi.admin_konfirmasipesanan', ['riwayat_tranksaksi_tabel' => $riwayat_tranksaksi_tabel]);
     }
 
     public function konfirmasi_create($id)
-    { 
+    {
         $riwayat_tranksaksi_tabel = Pesanan::findOrFail($id);
-        return view('pesanan.konfirmasi.pelanggan_konfirmasipesanan',['riwayat_tranksaksi_tabel'=>$riwayat_tranksaksi_tabel]);
+        return view('pesanan.konfirmasi.pelanggan_konfirmasipesanan', ['riwayat_tranksaksi_tabel' => $riwayat_tranksaksi_tabel]);
     }
 
     public function konfirmasi_store(Request $request)
     {
-        $this->validate($request,[
-            'pesanan_id'=>'unique:saldo_tabel'
-            ]);
+        $this->validate($request, [
+            'pesanan_id' => 'unique:saldo_tabel'
+        ]);
 
-        $saldo_tabel= new SaldoKeluarMasuk;
-        $saldo_tabel->user_id=$request->user_id;
-        $saldo_tabel->pesanan_id=$request->pesanan_id;
-        $saldo_tabel->produk=$request->produk;
-        $saldo_tabel->harga=$request->harga;
-        $saldo_tabel->qty=$request->qty;
-        $saldo_tabel->saldo_keluar=$request->saldo_keluar;
-        $saldo_tabel->saldo_masuk='0';
-        $saldo_tabel->konfirmasi=$request->konfirmasi;
-        $saldo_tabel->ket=$request->ket;
+        $saldo_tabel = new SaldoKeluarMasuk;
+        $saldo_tabel->user_id = $request->user_id;
+        $saldo_tabel->pesanan_id = $request->pesanan_id;
+        $saldo_tabel->nm_penerima = $request->nm_penerima;
+        $saldo_tabel->produk = $request->produk;
+        $saldo_tabel->harga = $request->harga;
+        $saldo_tabel->qty = $request->qty;
+        $saldo_tabel->saldo_keluar = $request->saldo_keluar;
+        $saldo_tabel->saldo_masuk = '0';
+        $saldo_tabel->konfirmasi = $request->konfirmasi;
+        $saldo_tabel->ket = $request->ket;
         $saldo_tabel->save();
 
         // Update ke tabel riwayat_tranksaksi_tabel
-        $riwayat_tranksaksi_tabel= Pesanan::findOrFail ($saldo_tabel->pesanan_id=$request->pesanan_id);
-        $riwayat_tranksaksi_tabel->konfirmasi=$request->konfirmasi;
+        $riwayat_tranksaksi_tabel = Pesanan::findOrFail($saldo_tabel->pesanan_id = $request->pesanan_id);
+        $riwayat_tranksaksi_tabel->konfirmasi = $request->konfirmasi;
         $riwayat_tranksaksi_tabel->update();
 
         return redirect('/pelanggan_pesanandikonfirmasi/{id}')->with(['success' => 'Pesanan Berhasil Dikonfirmasi']);
@@ -77,26 +78,26 @@ class SaldokeluarmasukController extends Controller
 
 
     public function tambah_saldocreate($id)
-    { 
+    {
         $users = User::findOrFail($id);
-        return view('saldo.admin_tambahsaldo',['users'=>$users]);
+        return view('saldo.admin_tambahsaldo', ['users' => $users]);
     }
 
     public function tambah_saldostore(Request $request)
     {
-        $saldo_tabel= new SaldoKeluarMasuk;
-        $saldo_tabel->user_id=$request->user_id;
-        $saldo_tabel->pesanan_id='0';
-        $saldo_tabel->produk='0';
-        $saldo_tabel->harga='0';
-        $saldo_tabel->qty='0';
-        $saldo_tabel->saldo_keluar='0';
-        $saldo_tabel->saldo_masuk=$request->saldo_masuk;
-        $saldo_tabel->konfirmasi='0';
-        $saldo_tabel->ket='0';
+        $saldo_tabel = new SaldoKeluarMasuk;
+        $saldo_tabel->user_id = $request->user_id;
+        $saldo_tabel->pesanan_id = '0';
+        $saldo_tabel->produk = '0';
+        $saldo_tabel->harga = '0';
+        $saldo_tabel->qty = '0';
+        $saldo_tabel->saldo_keluar = '0';
+        $saldo_tabel->saldo_masuk = $request->saldo_masuk;
+        $saldo_tabel->konfirmasi = '0';
+        $saldo_tabel->ket = '0';
         $saldo_tabel->save();
         return redirect()->to('/admin_daftarpelanggan')->with(['success' => 'Saldo Berhasil Ditambahkan']);
-}
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -105,25 +106,26 @@ class SaldokeluarmasukController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'pesanan_id'=>'unique:saldo_tabel'
-            ]);
+        $this->validate($request, [
+            'pesanan_id' => 'unique:saldo_tabel'
+        ]);
 
-        $saldo_tabel= new SaldoKeluarMasuk;
-        $saldo_tabel->user_id=$request->user_id;
-        $saldo_tabel->pesanan_id=$request->pesanan_id;
-        $saldo_tabel->produk=$request->produk;
-        $saldo_tabel->harga=$request->harga;
-        $saldo_tabel->qty=$request->qty;
-        $saldo_tabel->saldo_keluar=$request->saldo_keluar;
-        $saldo_tabel->saldo_masuk='0';
-        $saldo_tabel->konfirmasi=$request->konfirmasi;
-        $saldo_tabel->ket=$request->ket;
+        $saldo_tabel = new SaldoKeluarMasuk;
+        $saldo_tabel->user_id = $request->user_id;
+        $saldo_tabel->pesanan_id = $request->pesanan_id;
+        $saldo_tabel->nm_penerima = $request->nm_penerima;
+        $saldo_tabel->produk = $request->produk;
+        $saldo_tabel->harga = $request->harga;
+        $saldo_tabel->qty = $request->qty;
+        $saldo_tabel->saldo_keluar = $request->saldo_keluar;
+        $saldo_tabel->saldo_masuk = '0';
+        $saldo_tabel->konfirmasi = $request->konfirmasi;
+        $saldo_tabel->ket = $request->ket;
         $saldo_tabel->save();
 
         // Update ke tabel riwayat_tranksaksi_tabel
-        $riwayat_tranksaksi_tabel= Pesanan::findOrFail ($saldo_tabel->pesanan_id=$request->pesanan_id);
-        $riwayat_tranksaksi_tabel->konfirmasi=$request->konfirmasi;
+        $riwayat_tranksaksi_tabel = Pesanan::findOrFail($saldo_tabel->pesanan_id = $request->pesanan_id);
+        $riwayat_tranksaksi_tabel->konfirmasi = $request->konfirmasi;
         $riwayat_tranksaksi_tabel->update();
 
         return redirect('admin_terkonfirmasi')->with(['success' => 'Pesanan Berhasil Dikonfirmasi']);

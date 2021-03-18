@@ -71,12 +71,8 @@
             <div class="menu_section">
               <h3>General</h3>
               <ul class="nav side-menu">
-                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu">
-                    <li><a href="index.html">Dashboard</a></li>
-                    <li><a href="index2.html">Dashboard2</a></li>
-                    <li><a href="index3.html">Dashboard3</a></li>
-                  </ul>
+                <li><a href="/home"><i class="fa fa-home"></i> Home</a>
+
                 </li>
                 <li><a><i class="fa fa-edit"></i>Produk<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
@@ -106,6 +102,11 @@
                     <li><a href="/admin_historisaldo">Histori Saldo</a></li>
                   </ul>
                 </li>
+                <li><a><i class="fa fa-gears"></i> Pengaturan <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="/admin_createKategori">Tambah Kategori</a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>
@@ -118,22 +119,11 @@
             <div class="menu_section">
               <h3>General</h3>
               <ul class="nav side-menu">
-                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                <li><a href="/home"><i class="fa fa-home"></i> Home</span></a>
                 </li>
-
                 <li>
-                  <a href="#"><i class="fa fa-edit"></i>Produk <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu">
-                    <li><a href="/daftar_produk">Semua Produk</a></li>
-                    <li><a href="/k_jaket_zipper">Jaket Zippper</a></li>
-                    <li><a href="/k_jaket_hoodie">Jaket Hoodie</a></li>
-                    <li><a href="/k_jaket_bomber">Jaket Boomber</a></li>
-                    <li><a href="/k_kaos_polos_pendek">Kaos Polos Pendek</a></li>
-                    <li><a href="/k_kaos_polos_panjang">Kaos Polos Panjang</a></li>
-                  </ul>
-
+                  <a href="/daftar_produk"><i class="fa fa-shopping-cart"></i>Produk </a>
                 </li>
-
                 <li><a><i class="fa fa-desktop"></i> Pesanan <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="/pelanggan_pesanandiproses/{id}">Pesanan Belum Diproses</a></li>

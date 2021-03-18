@@ -7,6 +7,8 @@ use Session;
 use DB;
 use App\User;
 use Auth;
+use Excel;
+use App\Exports\UserExport;
 
 class UserController extends Controller
 {
@@ -129,5 +131,10 @@ class UserController extends Controller
     {
         DB::table('users')->where('id', $id)->delete();
         return redirect()->to('/admin_daftarpelanggan')->with(['success' => 'Data Pelanggan Berhasil Dihapus']);
+    }
+
+    public function exportuser()
+    {
+        return Excel::download(new UserExport, 'ExportUser.xlsx');
     }
 }

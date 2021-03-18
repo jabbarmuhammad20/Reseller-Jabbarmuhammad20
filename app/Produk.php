@@ -31,6 +31,11 @@ class Produk extends Model
 
   public function Pesanan()
   {
-    return $this->hashMany('App\Pesanan');
+    return $this->hasMany('App\Pesanan');
+  }
+
+  public function Kategori()
+  {
+    return $this->belongsTo('App\Kategori', 'kategori_id', 'id');
   }
 }

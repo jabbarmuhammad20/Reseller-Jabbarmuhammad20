@@ -8,22 +8,13 @@
 			<div class="col-md-12 col-sm-12 ">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2>Tambah Data Baru <small>
-								<button type="button" class="btn btn-secondary" data-toggle="modal" data-target=".bs-example-modal-lg">Import Excel</button>
-							</small></h2>
+						<h2>Tambah Data Baru</h2>
 						<ul class="nav navbar-right panel_toolbox">
-							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							<li>
+								<a href="produk/export" class="text-primary"><i class="fa fa-download"></i> Download</a>
 							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">Settings 1</a>
-									</li>
-									<li><a href="#">Settings 2</a>
-									</li>
-								</ul>
-							</li>
-							<li><a class="close-link"><i class="fa fa-close"></i></a>
+							<li>
+								<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg" class="text-primary"><i class=" fa fa-plus "></i> Import</a>
 							</li>
 						</ul>
 						<div class="clearfix"></div>
@@ -88,12 +79,9 @@
 											<div class="col-md-6 col-sm-6">
 												<select class="form-control" id="kategori" name="kategori">
 													<option>-</option>
-													<option value="kaos_polos_pendek">Kaos Polos Pendek</option>
-													<option value="kaos_polos_panjang">Kaos Polos Panjang</option>
-													<option value="jaket_zipper">Jaket Zipper</option>
-													<option value="jaket_hoodi">Jaket Hoodi</option>
-													<option value="jaket_bomber">Jaket Bomber</option>
-													<option value="jaket_bb_army">Jaket BB Army</option>
+													@foreach ($kategori as $kategori)
+													<option value="{{$kategori->n_kategori}}">{{$kategori->n_kategori}}</option>
+													@endforeach
 												</select>
 											</div>
 										</div>
