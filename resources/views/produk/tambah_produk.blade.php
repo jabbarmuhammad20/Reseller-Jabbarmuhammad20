@@ -77,10 +77,10 @@
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="kategori">Kategori*</label>
 											<div class="col-md-6 col-sm-6">
-												<select class="form-control" id="kategori" name="kategori">
+												<select class="form-control" id="kategori_id" name="kategori_id">
 													<option>-</option>
 													@foreach ($kategori as $kategori)
-													<option value="{{$kategori->n_kategori}}">{{$kategori->n_kategori}}</option>
+													<option value="{{$kategori->id}}">{{$kategori->n_kategori}}</option>
 													@endforeach
 												</select>
 											</div>

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RiwayatTranksaksiController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,11 @@ use App\Http\Controllers\RiwayatTranksaksiController;
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/', 'DashboardController@Dashboard');
+Route::get('dashboard_{kategori}', 'DashboardController@Dashboard_kategori')->name('dashboard.kategori');
+
+Route::get('/login1', function () {
 	return view('login.login');
 });
 
@@ -71,7 +77,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,pelanggan']], function (
 	// Kategori
 	Route::resource('/kategori', 'KategoriController');
 	Route::get('/daftar_produk', 'KategoriController@index')->name('kategori');
-	Route::get('/kategori/{kategori}', 'KategoriController@kategori_show')->name('produkkategori.show');
+	Route::get('/kategori_{kategori}', 'KategoriController@kategori_show')->name('produkkategori.show');
 
 	/*Pelanggan*/
 	Route::resource('pelanggan', 'UserController');

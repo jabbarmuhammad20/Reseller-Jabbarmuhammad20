@@ -52,7 +52,7 @@ class ProdukController extends Controller
         ]);
 
         $produk_tabel = new Produk;
-        $produk_tabel->kategori = $request->kategori;
+        $produk_tabel->kategori_id = $request->kategori_id;
         $produk_tabel->user_id = $request->user_id;
         $produk_tabel->k_produk = $request->k_produk;
         $produk_tabel->n_produk = $request->n_produk;
@@ -69,7 +69,7 @@ class ProdukController extends Controller
         $produk_tabel->stts = $request->stts;
         $produk_tabel->upload_produk = $request->file('upload_produk')->store('File_Produk');
         $produk_tabel->save();
-        return redirect('/create/produk')->with('toast_success', 'Data Berhasil Ditambahkan !');
+        return redirect()->back()->with('toast_success', 'Data Berhasil Ditambahkan !');
     }
 
     /**

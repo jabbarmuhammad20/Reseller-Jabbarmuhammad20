@@ -16,7 +16,7 @@ class ProdukImport implements ToModel
     {
         return new Produk([
             'user_id' => $row[0],
-            'kategori'    => $row[1],
+            'kategori_id'    => $row[1],
             'k_produk'    => $row[2],
             'n_produk'    => $row[3],
             'deskripsi'    => $row[4],
