@@ -17,10 +17,16 @@ class KategoriController extends Controller
     public function index()
     {
         $kategori = Kategori::all();
-        $produkall = Produk::all();
+        $produkall = Produk::paginate(12);
         return view('produk.daftar_produk', compact('kategori', 'produkall'));
     }
 
+    public function kategori_show(Kategori $kategori)
+    {
+        $produkall = $kategori->Produk()->paginate(12);
+        $kategori = Kategori::all();
+        return view('produk.daftar_produk', compact('produkall', 'kategori'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -58,13 +64,6 @@ class KategoriController extends Controller
     {
         $kategori = Kategori::findOrFail($id);
         return view('/produk.kategori.admin_editKategori', compact('kategori'));
-    }
-
-    public function kategori_show(Kategori $kategori)
-    {
-        $produkall = $kategori->Produk()->get();
-        $kategori = Kategori::all();
-        return view('produk.daftar_produk', compact('produkall', 'kategori'));
     }
     /**
      * Show the form for editing the specified resource.

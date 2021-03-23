@@ -12,13 +12,13 @@ class DashboardController extends Controller
     public function Dashboard()
     {
         $kategori = Kategori::all();
-        $produkall = Produk::all();
+        $produkall = Produk::paginate(12);
         return view('/layouts.ecommers', compact('kategori', 'produkall'));
     }
 
     public function Dashboard_kategori(Kategori $kategori)
     {
-        $produkall = $kategori->Produk()->get();
+        $produkall = $kategori->Produk()->paginate(12);
         $kategori = Kategori::all();
         return view('/layouts.ecommers', compact('kategori', 'produkall'));
     }

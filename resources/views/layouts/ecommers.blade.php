@@ -72,109 +72,10 @@
                             <li><a href="#">Home</a>
                             </li>
 
-                            <li><a href="#">Features</a>
-                                <ul>
-                                    <li><a href="#">Footer</a>
-                                        <ul>
-                                            <li><a href="footer-one.html">Footer1</a></li>
-                                            <li><a href="footer-two.html">Footer2</a></li>
-                                            <li><a href="footer-three.html">Footer3</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Price Table</a>
-                                        <ul>
-                                            <li><a href="price-table-one.html">Price Table1</a></li>
-                                            <li><a href="price-table-two.html">Price Table2</a></li>
+                            <li><a href="/info">About Us</a></li>
+                            <li><a href="https:wa.me/6283824430157"> <i class="fas fa-call"></i>0838824430157</a></li>
 
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-
-                            <li><a href="#">Category</a>
-                                <ul>
-                                    <li><a href="#">Laptop</a>
-                                        <ul>
-                                            <li><a href="#">Vaio</a></li>
-                                            <li><a href="#">Samsung</a></li>
-                                            <li><a href="#">Toshiba</a></li>
-                                            <li><a href="#">HP</a></li>
-
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Smartphone</a>
-                                        <ul>
-                                            <li><a href="#">Iphone</a></li>
-                                            <li><a href="#">Oppo</a></li>
-                                            <li><a href="#">Nokia</a></li>
-                                            <li><a href="#">Sony</a></li>
-                                            <li><a href="#">Samsung</a></li>
-
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Accessories</a>
-                                        <ul>
-                                            <li><a href="#">Headphone</a></li>
-                                            <li><a href="#">Adapter</a></li>
-                                            <li><a href="#">Bag</a></li>
-                                            <li><a href="#">Baby doll</a></li>
-
-                                        </ul>
-                                    </li>
-                                    <!-- Multi level menu -->
-                                    <li><a href="#">Multi Level Menu</a>
-                                        <ul>
-                                            <!-- Sub menu -->
-                                            <li><a href="#">Menu #1</a></li>
-                                            <li><a href="#">Menu #1</a></li>
-                                            <li><a href="#">Menu #1</a>
-                                                <ul>
-                                                    <!-- Sub menu -->
-                                                    <li><a href="#">Menu #2</a></li>
-                                                    <li><a href="#">Menu #2</a></li>
-                                                    <li><a href="#">Menu #2</a>
-                                                        <ul>
-                                                            <!-- Sub menu -->
-                                                            <li><a href="#">Menu #3</a></li>
-                                                            <li><a href="#">Menu #3</a></li>
-                                                            <li><a href="#">Menu #3</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li><a href="#">Blog</a>
-                                <ul>
-                                    <li><a href="blog.html"><span>Blog Default</span></a></li>
-                                    <li><a href="blog-masonry.html"><span>Blog Masonry</span></a></li>
-                                    <li><a href="blog-full-width.html"><span>Blog Full Width</span></a></li>
-                                    <li><a href="single-post.html"><span>Single Page 1</span></a></li>
-                                    <li><a href="single-post-v2.html"><span>Single Page 2</span></a></li>
-                                </ul>
-                            </li>
-
-                            <li><a href="#">Pages</a>
-                                <ul>
-                                    <li><a href="shop.html"><span>Shop</span></a></li>
-                                    <li><a href="single-product.html"><span>Single product</span></a></li>
-                                    <li><a href="shopping-cart.html"><span>Cart</span></a></li>
-                                    <li><a href="checkout.html"><span>Checkout</span></a></li>
-                                    <li><a href="wishlist.html"><span>Wishlist</span></a></li>
-                                    <li><a href="signin.html"><span>Sign In</span></a></li>
-                                    <li><a href="signup.html"><span>Sign Up</span></a></li>
-                                    <li><a href="404.html"><span>404 Page</span></a></li>
-                                </ul>
-                            </li>
-
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
                             <li class="tb-shopping-cart pull-right">
-
                                 <!-- Link with badge -->
                                 <a href="/login1" class=""><i class="fa fa-user"></i> Login </a>
                                 <!-- Dropdown content with item details -->
@@ -219,6 +120,7 @@
                             <div class="sidebar-navigation">
                                 <div class="title">Product Categories<i class="fa fa-angle-down"></i></div>
                                 <div class="list">
+                                    <a class="entry" href="/"><span><i class="fa fa-angle-right"></i>Semua Produk</span></a>
                                     @foreach ($kategori as $kategori)
                                     <a class="entry" href="{{route ('dashboard.kategori',$kategori->slug)}}"><span><i class="fa fa-angle-right"></i>{{$kategori->n_kategori}}</span></a>
                                     @endforeach
@@ -299,17 +201,24 @@
                             <!-- Shopping items -->
                             <div class="shopping-item">
                                 <!-- Image -->
-                                <a href="single-product.html"><img class="img-responsive" src="storage/{{$produk->upload_produk}}" alt="" /></a>
+                                <a href="single-product.html"><img class="img-responsive" src="storage/{{$produk->upload_produk}}" alt="" style="width:200px; height:200px;/></a>
                                 <!-- Shopping item name / Heading -->
-                                <h4><a href="single-product.html">{{$produk->n_produk}} {{$produk->warna}}</a><span class="color pull-right">{{$produk->hrg_m}}</span></h4>
+                                <h4><a href=" single-product.html">{{$produk->n_produk}} <br></a>
+                                <span class="color pull-right">
+                                    <p>{{ "Rp. " . number_format($produk->hrg_m, 0, ",", ".")}}
+                                        {{ "Rp. " . number_format($produk->hrg_l, 0, ",", ".")}}
+                                        {{ "Rp. " . number_format($produk->hrg_xl, 0, ",", ".")}}
+                                        {{ "Rp. " . number_format($produk->hrg_xxl, 0, ",", ".")}}
+                                    </p>
+                                </span></h4>
                                 <div class="clearfix"></div>
                                 <!-- Buy now button -->
                                 <div class="visible-xs">
-                                    <a class="btn btn-color btn-sm" href="#">Buy Now</a>
+                                    <a class="btn btn-color btn-sm" href="#">{{$produk->warna}}</a>
                                 </div>
                                 <!-- Shopping item hover block & link -->
                                 <div class="item-hover bg-color hidden-xs">
-                                    <a href="#">Add to cart</a>
+                                    <a href="#">{{$produk->warna}}</a>
                                 </div>
                             </div>
                         </div>
@@ -317,7 +226,9 @@
                     </div>
                 </div>
         </section>
-
+        <center>
+            {{$produkall->links()}}
+        </center>
         <!-- start footer area -->
         <footer class="footer-area-content">
 
@@ -328,9 +239,9 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <img alt="" src="img/footer-logo.png" class="footer-logo">
-                                    <div class="footer-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</div>
-                                    <div class="footer-address">30 South Avenue San Francisco<br> Phone: +78 123 456 123<br> Email: <a href="mailto:Support@demo.com">Support@demo.com</a><br>
-                                        <a target="_blank" href="http://iglyphic.com/"><b>www.lookcare.com</b></a>
+                                    <div class="footer-description">Pemancingan Kilo Angkat Pak Emuh</div>
+                                    <div class="footer-address">Blok Dukuhbitung RT/RW 02/08 -Desa karangsambung Kec. Kadipaten - Majalengka - Jawa Barat<br> Phone: +78 123 456 123<br> Email: <a href="mailto:jabbarmuhammad20@gmail.com">abbarmuhammad20@gmail.co</a><br>
+                                        <a target="_blank" href="https://www.jabbarmuhammad20.com"><b>www.jabbarmuhammad20.com</b></a>
                                     </div>
                                     <div class="clear"></div>
                                 </div>

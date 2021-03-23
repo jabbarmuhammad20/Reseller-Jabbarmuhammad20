@@ -93,8 +93,9 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
+        $kategori = Kategori::all();
         $produk_tabel = Produk::findOrFail($id);
-        return view('produk.admin_editproduk')->with('produk_tabel', $produk_tabel);
+        return view('produk.admin_editproduk', compact('kategori', 'produk_tabel'));
     }
 
     /**

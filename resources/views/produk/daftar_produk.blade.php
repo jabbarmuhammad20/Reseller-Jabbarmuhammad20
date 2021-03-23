@@ -74,7 +74,7 @@
     @endforeach
   </div>
 </div>
-
+{{$produkall->links()}}
 
 <script>
   $('.delete-confirm').click(function(event) {
@@ -96,6 +96,7 @@
     $('delete${id}').submit();
   });
 </script>
+
 
 @include('sweetalert::alert')
 @endsection
