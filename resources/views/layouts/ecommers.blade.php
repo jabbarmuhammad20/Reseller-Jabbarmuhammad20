@@ -77,6 +77,12 @@
 
                             <li class="tb-shopping-cart pull-right">
                                 <!-- Link with badge -->
+                                <a href="/register1" class=""><i class="fa fas-register"></i> Daftar </a>
+                                <!-- Dropdown content with item details -->
+                            </li>
+                            <li class="tb-shopping-cart pull-right">
+                                <!-- Link with badge -->
+
                                 <a href="/login1" class=""><i class="fa fa-user"></i> Login </a>
                                 <!-- Dropdown content with item details -->
                             </li>
@@ -201,7 +207,7 @@
                             <!-- Shopping items -->
                             <div class="shopping-item">
                                 <!-- Image -->
-                                <a href="single-product.html"><img class="img-responsive" src="storage/{{$produk->upload_produk}}" alt="" style="width:200px; height:200px;/></a>
+                                <a href="{{route ('kategori.show_produk', $produk->id)}}"><img class="img-responsive" src="storage/{{$produk->upload_produk}}" alt="" style="width:200px; height:200px;/></a>
                                 <!-- Shopping item name / Heading -->
                                 <h4><a href=" single-product.html">{{$produk->n_produk}} <br></a>
                                 <span class="color pull-right">

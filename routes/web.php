@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RiwayatTranksaksiController;
 use App\Http\Controllers\DashboardController;
-
+use App\Mail\NotifPendaftaranReseller;
+use FontLib\Table\Type\name;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,12 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', 'DashboardController@Dashboard');
 Route::get('dashboard_{kategori}', 'DashboardController@Dashboard_kategori')->name('dashboard.kategori');
+
+//Menu Daftar User Tanpa Login 
+Route::get('/register1', 'UserController@create_user');
+Route::post('/register_store', 'UserController@store_user');
+Route::get('/screnshoot', 'UserController@screnshoot');
+Route::get('kategori_show_produk/{id}', 'KategoriController@show_produk')->name('kategori.show_produk');
 
 Route::get('/login1', function () {
 	return view('login.login');

@@ -9,6 +9,8 @@ use App\User;
 use Auth;
 use Excel;
 use App\Exports\UserExport;
+use App\Mail\NotifPendaftaranReseller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,6 +39,43 @@ class UserController extends Controller
     public function create()
     {
         return view('pelanggan.admin_tambahpelanggan');
+    }
+
+    //Menu Daftar tanpa Login admin
+    public function create_user()
+    {
+        return view('/login.register1');
+    }
+
+    public function store_user(Request $request)
+    {
+        $this->validate($request, [
+
+            'name' => 'min:5',
+            'email' => 'required|email|unique:users',
+            'tem_lahir' => 'required',
+            'tgl_lahir' => 'required'
+
+        ]);
+
+        $users = new \App\User;
+        $users->name = $request->name;
+        $users->email = $request->email;
+        $users->tem_lahir = $request->tem_lahir;
+        $users->tgl_lahir = $request->tgl_lahir;
+        $users->alamat = $request->alamat;
+        $users->no_hp = $request->no_hp;
+        $users->role = 'pelanggan';
+        $users->n_toko = '-';
+        $users->norek = '-';
+        $users->norek_an = '-';
+        $users->bank = '-';
+        $users->saldo = '0';
+        $users->ket = '-';
+        $users->password = hash::make($request->password);
+        \Mail::to($users->email)->send(new NotifPendaftaranReseller);
+        $users->save();
+        return redirect()->back()->with(['success' => 'Berhasil Mendaftar Mohon Konfirmasi Email Anda']);
     }
 
     /**
@@ -73,6 +112,7 @@ class UserController extends Controller
         $users->password = bcrypt('123456789');
 
         $users->save();
+
         return redirect()->to('/tambahpelanggan')->with(['success' => 'Data Pelanggan Berhasil Ditambahkan']);
     }
 

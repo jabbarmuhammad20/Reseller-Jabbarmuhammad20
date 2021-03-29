@@ -73,19 +73,8 @@
                   {{ __('Login') }}
                 </button>
 
-                <span class="d-block text-left my-4 text-muted"> or sign in with</span>
+                <span class="d-block text-left my-4 text-muted">Belum punya akun reseller ? <a href="/register1">Daftar</a></span>
 
-                <div class="social-login">
-                  <a href="#" class="facebook">
-                    <span class="icon-facebook mr-3"></span>
-                  </a>
-                  <a href="#" class="twitter">
-                    <span class="icon-twitter mr-3"></span>
-                  </a>
-                  <a href="#" class="google">
-                    <span class="icon-google mr-3"></span>
-                  </a>
-                </div>
               </form>
             </div>
           </div>

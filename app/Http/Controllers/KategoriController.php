@@ -102,4 +102,10 @@ class KategoriController extends Controller
         Kategori::where('id', $id)->delete();
         return redirect()->back();
     }
+
+    public function show_produk($id)
+    {
+        $produk_tabel = Produk::findOrFail($id);
+        return view('layouts.front_showProduk')->with('produk_tabel', $produk_tabel);
+    }
 }
