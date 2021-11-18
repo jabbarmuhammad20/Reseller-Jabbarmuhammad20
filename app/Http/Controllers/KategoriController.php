@@ -17,13 +17,13 @@ class KategoriController extends Controller
     public function index()
     {
         $kategori = Kategori::all();
-        $produkall = Produk::paginate(12);
+        $produkall = Produk::paginate(8);
         return view('produk.daftar_produk', compact('kategori', 'produkall'));
     }
 
     public function kategori_show(Kategori $kategori)
     {
-        $produkall = $kategori->Produk()->paginate(12);
+        $produkall = $kategori->Produk()->paginate(8);
         $kategori = Kategori::all();
         return view('produk.daftar_produk', compact('produkall', 'kategori'));
     }

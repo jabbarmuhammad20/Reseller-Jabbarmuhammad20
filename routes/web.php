@@ -17,8 +17,8 @@ use FontLib\Table\Type\name;
 |
 */
 
-
 Route::get('/', 'DashboardController@Dashboard');
+Route::get('/master1', 'DashboardController@master1');
 Route::get('dashboard_{kategori}', 'DashboardController@Dashboard_kategori')->name('dashboard.kategori');
 
 //Menu Daftar User Tanpa Login 

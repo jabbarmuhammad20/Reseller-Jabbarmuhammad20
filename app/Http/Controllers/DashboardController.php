@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    public function master1()
+    {
+        return view ('layouts/master1');
+    }
+
     public function Dashboard()
     {
         $kategori = Kategori::all();
