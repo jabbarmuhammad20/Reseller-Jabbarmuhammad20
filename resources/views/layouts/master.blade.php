@@ -78,7 +78,7 @@
                   <ul class="nav child_menu">
                     <li><a href="/create_produk">Tambah Produk</a></li>
                     <li><a href="/daftar_produk">Daftar Produk</a></li>
-                    <li><a href="form_advanced.html">Tambah Stok</a></li>
+                    <li><a href="#"><font color="red">Tambah Stok</font></a></li>
                     <li><a href="/admin_diarsipkan">Arsip Produk</a></li>
                   </ul>
                 </li>

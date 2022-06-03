@@ -88,10 +88,9 @@
                   <td>{{ "Rp. " . number_format($pelanggan->saldo, 0, ",", ".") }}</td>
                   <td>{{$pelanggan->sudah_dibayar}}</td>
                   <td>
-                    <a href="/tambah_saldocreate/{{$pelanggan->id}}" type="button" class="btn btn-success btn-sm" title="Bayar"><i class="fa fa-money text-white"> Bayar</i></a>
-                    <a href="" type="button" class="btn btn-primary btn-sm" title="Lihat"><i class="fa fa-eye text-white"> Lihat</i></a>
-
-                    <a href="/user/destroy/{{$pelanggan->id}}" type="button" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')"><i class="fa fa-trash text-white"> Hapus</a>
+                    <a href="/tambah_saldocreate/{{$pelanggan->id}}" type="button" class="btn btn-success btn-sm" title="Bayar"><i class="fa fa-money text-white"> TopUp</i></a>
+                    <a href="{{route('admin_lihatpelanggan', $pelanggan->id)}}" type="button" class="btn btn-primary btn-sm" title="Lihat"><i class="fa fa-eye text-white"> Lihat</i></a>
+                    <a href="/user/destroy/{{$pelanggan->id}}" type="button" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')"><i class="fa fa-trash text-white"> Hapus</i></a>
                   </td>
                 </tr>
                 @endforeach

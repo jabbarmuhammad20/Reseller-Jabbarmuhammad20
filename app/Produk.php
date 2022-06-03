@@ -29,6 +29,11 @@ class Produk extends Model
     'stts'
   ];
 
+  public function AddCart()
+  {
+    return $this->belongTo('App\AddCart');
+  }
+
   public function Pesanan()
   {
     return $this->hasMany('App\Pesanan');

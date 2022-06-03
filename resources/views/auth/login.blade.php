@@ -1,4 +1,8 @@
-@extends('layouts.app')
+
+{{-- lempar ke halaman Login  --}}
+@include('m/login')
+
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -70,4 +74,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}

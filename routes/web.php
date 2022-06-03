@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 	Route::post('/tambahpelanggan/tambah', 'UserController@store');
 	Route::get('/user/hapus/{id}', 'UserController@destroy');
 	Route::get('/export/user', 'UserController@exportuser');
+	Route::get('/admin_lihatpelanggan/{id}', 'UserController@edit')->name('admin_lihatpelanggan');
 
 	// Pesanan
 	Route::get('/user/destroy/{id}', 'UserController@destroy');
@@ -111,4 +112,21 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,pelanggan']], function (
 	Route::get('/pelanggan_pesanandikonfirmasi/{id}', 'RiwayatTranksaksiController@pelanggan_pesanandikonfirmasi');
 	Route::get('/pelanggan_histori/{id}', 'RiwayatTranksaksiController@pelanggan_pesananhistori');
 	Route::delete('/hapuspesanan/{id}', 'RiwayatTranksaksiController@destroy')->name('tranksaksi.destroy');
+
+});
+
+// Tampilan Mobile Tanpa Login
+Route::get('m/login', function () {
+	return view('m/login');
+});
+Route::get('/m', 'DashboardController@mDashboard')->name('m');
+Route::get('/produk_cari','DashboardController@mCari');
+Route::get('m_dashboard_{kategori}', 'DashboardController@mDashboard_kategori')->name('mdashboard.kategori');
+Route::get('/mShowproduk/{id}', 'DashboardController@mShowproduk')->name('mShow.Produk');
+
+// Tampilan Harus Login
+Route::group(['middleware' => ['auth', 'checkRole:admin,pelanggan']], function () {
+	Route::post('/mAddcart','AddcartController@mAddcart')->name('m.addcart');
+	Route::get('/mcart','AddcartController@mcart')->name('m.cart');
+	Route::get('mprofile','UserController@mprofil');
 });

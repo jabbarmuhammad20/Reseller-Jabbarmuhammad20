@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use DB;
 use App\User;
+use App\SaldoKeluarMasuk;
 use Auth;
 use Excel;
 use App\Exports\UserExport;
@@ -22,7 +23,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('pelanggan.admin_daftarpelanggan', ['users' => $users]);
+        return view('pelanggan.admin_daftarpelanggan',compact('users'));
     }
 
     public function pelanggan_saldo($id)
@@ -136,7 +137,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Menampilkan informasi saldo menurut id
+        $saldo = SaldoKeluarMasuk::where('user_id',$id)->get();
+        
+        $users = User::findOrFail($id);
+        return view('pelanggan.admin_lihatpelanggan',compact('saldo','users'));
     }
 
     public function pelanggan_profile()
@@ -176,5 +181,12 @@ class UserController extends Controller
     public function exportuser()
     {
         return Excel::download(new UserExport, 'ExportUser.xlsx');
+    }
+
+
+    // Versi Mobile
+    public function mprofil(){
+        $users = User::where('id', Auth::user()->id)->first();
+        return view('m/profil')->with('users', $users);
     }
 }

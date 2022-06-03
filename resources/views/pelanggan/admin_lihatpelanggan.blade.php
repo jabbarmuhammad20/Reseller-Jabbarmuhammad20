@@ -8,19 +8,8 @@
       <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
           <div class="x_title">
-            <h2>User Report <small>Activity report</small></h2>
+            <h2>Biodata <small>{{$users->name}}</small></h2>
             <ul class="nav navbar-right panel_toolbox">
-              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Settings 1</a>
-                    <a class="dropdown-item" href="#">Settings 2</a>
-                  </div>
-              </li>
-              <li><a class="close-link"><i class="fa fa-close"></i></a>
-              </li>
             </ul>
             <div class="clearfix"></div>
           </div>
@@ -29,7 +18,7 @@
               <div class="profile_img">
                 <div id="crop-avatar">
                   <!-- Current avatar -->
-                  <img class="img-responsive avatar-view" src="images/picture.jpg" alt="Avatar" title="Change the avatar">
+                  <img class="img-responsive avatar-view" src="{{asset('images/img.jpg')}}" alt="Avatar" title="Change the avatar">
                 </div>
               </div>
               <h3>{{$users->name}}</h3>
@@ -50,45 +39,14 @@
 
               <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
               <br />
-
-              <!-- start skills -->
-              <h4>Skills</h4>
-              <ul class="list-unstyled user_data">
-                <li>
-                  <p>Web Applications</p>
-                  <div class="progress progress_sm">
-                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                  </div>
-                </li>
-                <li>
-                  <p>Website Design</p>
-                  <div class="progress progress_sm">
-                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="70"></div>
-                  </div>
-                </li>
-                <li>
-                  <p>Automation & Testing</p>
-                  <div class="progress progress_sm">
-                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="30"></div>
-                  </div>
-                </li>
-                <li>
-                  <p>UI / UX</p>
-                  <div class="progress progress_sm">
-                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                  </div>
-                </li>
-              </ul>
-              <!-- end of skills -->
-
             </div>
             <div class="col-md-9 col-sm-9 ">
 
               <div class="" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                  <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Recent Activity</a>
+                  <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Profile</a>
                   </li>
-                  <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Projects Worked on</a>
+                  <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Histori Saldo</a>
                   </li>
                   <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Profile</a>
                   </li>
@@ -97,73 +55,60 @@
                   <div role="tabpanel" class="tab-pane active " id="tab_content1" aria-labelledby="home-tab">
 
                     <!-- start recent activity -->
-                    <ul class="messages">
-                      <li>
-                        <img src="images/img.jpg" class="avatar" alt="Avatar">
-                        <div class="message_date">
-                          <h3 class="date text-info">24</h3>
-                          <p class="month">May</p>
-                        </div>
-                        <div class="message_wrapper">
-                          <h4 class="heading">Desmond Davison</h4>
-                          <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                          <br />
-                          <p class="url">
-                            <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                            <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
-                          </p>
-                        </div>
-                      </li>
-                      <li>
-                        <img src="images/img.jpg" class="avatar" alt="Avatar">
-                        <div class="message_date">
-                          <h3 class="date text-error">21</h3>
-                          <p class="month">May</p>
-                        </div>
-                        <div class="message_wrapper">
-                          <h4 class="heading">Brian Michaels</h4>
-                          <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                          <br />
-                          <p class="url">
-                            <span class="fs1" aria-hidden="true" data-icon=""></span>
-                            <a href="#" data-original-title="">Download</a>
-                          </p>
-                        </div>
-                      </li>
-                      <li>
-                        <img src="images/img.jpg" class="avatar" alt="Avatar">
-                        <div class="message_date">
-                          <h3 class="date text-info">24</h3>
-                          <p class="month">May</p>
-                        </div>
-                        <div class="message_wrapper">
-                          <h4 class="heading">Desmond Davison</h4>
-                          <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                          <br />
-                          <p class="url">
-                            <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                            <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
-                          </p>
-                        </div>
-                      </li>
-                      <li>
-                        <img src="images/img.jpg" class="avatar" alt="Avatar">
-                        <div class="message_date">
-                          <h3 class="date text-error">21</h3>
-                          <p class="month">May</p>
-                        </div>
-                        <div class="message_wrapper">
-                          <h4 class="heading">Brian Michaels</h4>
-                          <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                          <br />
-                          <p class="url">
-                            <span class="fs1" aria-hidden="true" data-icon=""></span>
-                            <a href="#" data-original-title="">Download</a>
-                          </p>
-                        </div>
-                      </li>
-
-                    </ul>
+                    <table class="data table table-striped no-margin">
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Nama Lengkap</td>
+                          <td>{{$users->name}}</td>
+                          <td> </td>
+                          <td> </td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Nama Toko</td>
+                          <td>{{$users->n_toko}}</td>
+                          <td> </td>
+                          <td> </td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Email</td>
+                          <td>{{$users->email}}</td>
+                          <td> </td>
+                          <td> </td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>Tempat & Tanggal Lahir</td>
+                          <td>{{$users->tem_lahir}}, {{$users->tgl_lahir}} </td>
+                          <td> </td>
+                          <td> </td>
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>No Hp/Wa</td>
+                          <td> <a href="https://wa.me/{{$users->no_hp}}"type="button" target="blank" class="btn btn-seccondary btn-sm"><i class="fa fa-whatsapp "></i> {{$users->no_hp}}</a></td>
+                          <td> </td>
+                          <td> </td>
+                        </tr>
+                        <tr>
+                          <td>6</td>
+                          <td>No Rekening</td>
+                          <td>{{$users->norek}} - {{$users->norek_an}} {{$users->bank}}</td>
+                          <td> </td>
+                          <td> </td>
+                        </tr>
+                        <tr>
+                          <td>7</td>
+                          <td>Keterangan</td>
+                          <td>{{$users->ket}}</td>
+                          <td> </td>
+                          <td> </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
                     <!-- end recent activity -->
 
                   </div>
@@ -174,57 +119,33 @@
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>Project Name</th>
-                          <th>Client Company</th>
-                          <th class="hidden-phone">Hours Spent</th>
-                          <th>Contribution</th>
+                          <th>Tanggal</th>
+                          <th>Saldo Masuk</th>
+                          <th>Saldo Keluar</th>
+                          <th>Keterangan</th>
                         </tr>
                       </thead>
                       <tbody>
+                        @php $no = 1; @endphp
+                        @if (count ($saldo) > 0)   
+                            @foreach ($saldo as $s)  
+                            <tr>
+                              <td>{{$no++}}</td>
+                              <td>{{$s->created_at}}</td>
+                              <td>{{ "Rp. " . number_format($s->saldo_masuk, 0, ",", ".") }}</td>
+                              <td>{{ "Rp. " . number_format($s->saldo_keluar, 0, ",", ".") }}</td>
+                              <td>{{$s->produk}}</td>
+                            </tr>
+                            @endforeach    
+                        @else
                         <tr>
-                          <td>1</td>
-                          <td>New Company Takeover Review</td>
-                          <td>Deveint Inc</td>
-                          <td class="hidden-phone">18</td>
-                          <td class="vertical-align-mid">
-                            <div class="progress">
-                              <div class="progress-bar progress-bar-success" data-transitiongoal="35"></div>
-                            </div>
-                          </td>
+                          <td></td>
+                          <td></td>
+                          <td>Tidak Ada Data</td>
+                          <td></td>
+                          <td></td>
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>New Partner Contracts Consultanci</td>
-                          <td>Deveint Inc</td>
-                          <td class="hidden-phone">13</td>
-                          <td class="vertical-align-mid">
-                            <div class="progress">
-                              <div class="progress-bar progress-bar-danger" data-transitiongoal="15"></div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Partners and Inverstors report</td>
-                          <td>Deveint Inc</td>
-                          <td class="hidden-phone">30</td>
-                          <td class="vertical-align-mid">
-                            <div class="progress">
-                              <div class="progress-bar progress-bar-success" data-transitiongoal="45"></div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>New Company Takeover Review</td>
-                          <td>Deveint Inc</td>
-                          <td class="hidden-phone">28</td>
-                          <td class="vertical-align-mid">
-                            <div class="progress">
-                              <div class="progress-bar progress-bar-success" data-transitiongoal="75"></div>
-                            </div>
-                          </td>
-                        </tr>
+                        @endif
                       </tbody>
                     </table>
                     <!-- end user projects -->
